@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>كشري أفندينا – الزمالك | مفتوح 24 ساعة</title>
+<meta name="description" content="كشري أفندينا الزمالك – أشهى كشري وشاورما في مصر. مفتوح 24 ساعة. اطلب دلوقتي واتساب." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C0392B;
+    --orange:#E67E22;
+    --cream:#FDF6EC;
+    --dark:#1B1B1B;
+    --gray:#6B6B6B;
+    --gold:#D4A017;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Cairo',sans-serif;
+    background:var(--cream);
+    color:var(--dark);
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;right:0;left:0;z-index:100;
+    background:rgba(27,27,27,.92);
+    backdrop-filter:blur(10px);
+    padding:14px 6%;
+    display:flex;justify-content:space-between;align-items:center;
+    color:#fff;
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+  }
+  .logo{font-weight:900;font-size:22px;color:var(--orange);}
+  .logo span{color:#fff;}
+  .nav-links{display:flex;gap:26px;font-weight:600;font-size:15px;}
+  .nav-links a{transition:.3s;position:relative;}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-links a::after{
+    content:'';position:absolute;bottom:-6px;right:0;width:0;height:2px;
+    background:var(--orange);transition:.3s;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    padding:120px 6% 80px;
+    background:
+      linear-gradient(rgba(27,27,27,.75),rgba(27,27,27,.85)),
+      url('https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=1600') center/cover;
+    color:#fff;
+    position:relative;
+  }
+  .hero-content{max-width:800px;animation:fadeUp 1s ease;}
+  .hero h1{
+    font-size:clamp(38px,7vw,74px);
+    font-weight:900;line-height:1.15;margin-bottom:20px;
+  }
+  .hero h1 span{color:var(--orange);}
+  .hero p{
+    font-size:clamp(16px,2.2vw,21px);
+    color:#ddd;margin-bottom:35px;line-height:1.8;
+  }
+  .badge{
+    display:inline-block;background:var(--red);
+    padding:8px 20px;border-radius:30px;
+    font-weight:700;font-size:14px;margin-bottom:25px;
+    animation:pulse 2s infinite;
+  }
+  .btn-group{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    padding:15px 34px;border-radius:50px;font-weight:700;font-size:16px;
+    transition:.3s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--orange);color:#fff;}
+  .btn-primary:hover{background:var(--red);transform:translateY(-3px);box-shadow:0 10px 25px rgba(230,126,34,.4);}
+  .btn-outline{background:transparent;color:#fff;border:2px solid #fff;}
+  .btn-outline:hover{background:#fff;color:var(--dark);transform:translateY(-3px);}
+
+  /* SECTION */
+  section{padding:90px 6%;}
+  .section-title{
+    text-align:center;font-size:clamp(28px,4vw,44px);
+    font-weight:900;margin-bottom:15px;
+  }
+  .section-sub{
+    text-align:center;color:var(--gray);font-size:16px;
+    margin-bottom:55px;
+  }
+
+  /* MENU */
+  .menu-categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:45px;}
+  .cat-btn{
+    padding:10px 24px;border-radius:30px;background:#fff;
+    border:2px solid #eee;font-weight:700;cursor:pointer;
+    transition:.3s;font-family:inherit;font-size:15px;
+  }
+  .cat-btn.active,.cat-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange);}
+  .menu-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;max-width:1200px;margin:0 auto;
+  }
+  .menu-card{
+    background:#fff;border-radius:20px;overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    transition:.4s;position:relative;
+  }
+  .menu-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,.12);}
+  .menu-card-img{
+    height:200px;background:linear-gradient(135deg,var(--orange),var(--red));
+    display:flex;align-items:center;justify-content:center;
+    font-size:70px;
+  }
+  .menu-card-body{padding:20px;}
+  .menu-card h3{font-size:20px;margin-bottom:8px;}
+  .menu-card p{color:var(--gray);font-size:14px;line-height:1.6;margin-bottom:15px;}
+  .menu-card-footer{display:flex;justify-content:space-between;align-items:center;}
+  .price{font-size:22px;font-weight:900;color:var(--red);}
+  .price small{font-size:14px;font-weight:600;color:var(--gray);}
+  .order-btn{
+    background:var(--orange);color:#fff;padding:9px 20px;
+    border-radius:25px;font-weight:700;font-size:13px;
+    transition:.3s;border:none;cursor:pointer;font-family:inherit;
+  }
+  .order-btn:hover{background:var(--red);}
+  .tag{
+    position:absolute;top:15px;right:15px;background:var(--gold);
+    color:#fff;padding:5px 14px;border-radius:20px;
+    font-size:12px;font-weight:700;
+  }
+
+  /* ABOUT */
+  .about{background:#fff;}
+  .about-wrap{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  }
+  .about-text h2{font-size:clamp(28px,3.5vw,40px);margin-bottom:20px;}
+  .about-text h2 span{color:var(--orange);}
+  .about-text p{color:var(--gray);line-height:2;margin-bottom:18px;font-size:16px;}
+  .about-img{
+    height:400px;border-radius:25px;
+    background:linear-gradient(135deg,var(--orange),var(--red));
+    display:flex;align-items:center;justify-content:center;
+    font-size:120px;box-shadow:0 20px 40px rgba(230,126,34,.3);
+  }
+
+  /* FEATURES */
+  .features{background:var(--dark);color:#fff;}
+  .features .section-title{color:#fff;}
+  .features .section-sub{color:#aaa;}
+  .feat-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;max-width:1100px;margin:0 auto;text-align:center;
+  }
+  .feat-card{
+    padding:40px 25px;background:rgba(255,255,255,.05);
+    border-radius:20px;transition:.3s;border:1px solid rgba(255,255,255,.08);
+  }
+  .feat-card:hover{background:rgba(230,126,34,.15);transform:translateY(-5px);}
+  .feat-icon{font-size:48px;margin-bottom:18px;}
+  .feat-card h3{font-size:20px;margin-bottom:12px;}
+  .feat-card p{color:#bbb;font-size:14px;line-height:1.8;}
+
+  /* REVIEWS */
+  .reviews-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;max-width:1100px;margin:0 auto;
+  }
+  .review-card{
+    background:#fff;padding:30px;border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+    border-right:4px solid var(--orange);
+  }
+  .stars{color:var(--gold);font-size:18px;margin-bottom:12px;}
+  .review-card p{color:#444;line-height:1.8;margin-bottom:15px;font-style:italic;}
+  .reviewer{font-weight:700;font-size:14px;color:var(--orange);}
+
+  /* CONTACT */
+  .contact{background:#fff;}
+  .contact-wrap{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;
+  }
+  .contact-info{display:flex;flex-direction:column;gap:22px;}
+  .info-item{
+    display:flex;gap:18px;align-items:flex-start;
+    padding:22px;background:var(--cream);border-radius:16px;
+    transition:.3s;
+  }
+  .info-item:hover{transform:translateX(-5px);box-shadow:0 5px 15px rgba(0,0,0,.06);}
+  .info-icon{
+    font-size:26px;min-width:50px;height:50px;
+    background:var(--orange);color:#fff;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .info-item h4{font-size:16px;margin-bottom:6px;}
+  .info-item p,.info-item a{color:var(--gray);font-size:14px;line-height:1.6;}
+  .info-item a:hover{color:var(--orange);}
+  .map-box{
+    border-radius:20px;overflow:hidden;min-height:400px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+  }
+  .map-box iframe{width:100%;height:100%;border:0;min-height:400px;}
+
+  /* FOOTER */
+  footer{
+    background:var(--dark);color:#fff;text-align:center;
+    padding:40px 6%;font-size:14px;
+  }
+  footer .logo{font-size:26px;margin-bottom:12px;display:block;}
+  footer p{color:#999;line-height:1.8;}
+
+  /* WHATSAPP FLOAT */
+  .wa-float{
+    position:fixed;bottom:25px;left:25px;z-index:999;
+    width:62px;height:62px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 25px rgba(37,211,102,.5);
+    transition:.3s;animation:bounce 2s infinite;
+  }
+  .wa-float:hover{transform:scale(1.1);}
+  .wa-float svg{width:34px;height:34px;fill:#fff;}
+
+  /* ANIMATIONS */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .nav-links{display:none;}
+    .about-wrap,.contact-wrap{grid-template-columns:1fr;}
+    .about-img{height:280px;order:-1;}
+  }
+  @media(max-width:500px){
+    section{padding:60px 5%;}
+    .hero{padding:100px 5% 60px;}
+    .btn{padding:13px 26px;font-size:14px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">كشري <span>أفندينا</span></div>
+  <div class="nav-links">
+    <a href="#home">الرئيسية</a>
+    <a href="#menu">المنيو</a>
+    <a href="#about">عننا</a>
+    <a href="#reviews">آراء العملاء</a>
+    <a href="#contact">تواصل</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="badge">🔥 مفتوح 24 ساعة – الزمالك</div>
+    <h1>طعم <span>الكشري</span> اللي مبيخلصش</h1>
+    <p>كشري أفندينا – أصالة الطعم المصري في قلب الزمالك. كشري، شاورما، ومكونات طازة كل يوم. تعال أو اطلب لحد باب البيت.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/201145555042?text=عايز%20أطلب%20من%20كشري%20أفندينا" class="btn btn-primary" target="_blank">🛵 اطلب دلوقتي</a>
+      <a href="#menu" class="btn btn-outline">🍛 شوف المنيو</a>
+    </div>
+  </div>
+</header>
+
+<!-- MENU -->
+<section id="menu">
+  <h2 class="section-title">المنيو بتاعنا</h2>
+  <p class="section-sub">كل حاجة طازة ومتعمولة بحب</p>
+
+  <div class="menu-categories">
+    <button class="cat-btn active" data-cat="koshari">🍛 الكشري</button>
+    <button class="cat-btn" data-cat="shawarma">🌯 الشاورما</button>
+    <button class="cat-btn" data-cat="extras">🍟 الإضافات</button>
+    <button class="cat-btn" data-cat="drinks">🥤 المشروبات</button>
+  </div>
+
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="about-text">
+      <h2>حكايتنا مع <span>الكشري</span></h2>
+      <p>كشري أفندينا بدأ من حب بسيط: نعمل أحلى كشري في مصر، بمكونات طازة ووصفة سرية في الصلصة.</p>
+      <p>في قلب الزمالك، بقينا مكان بيجمع العيلة والأصحاب على طبق كشري دافي، وشاورما متعلمة من أصولها.</p>
+      <p>مفتوحين 24 ساعة، عشان مهما كان وقتك، تلاقي عندنا طعم يظبط يومك. ❤️</p>
+    </div>
+    <div class="about-img">🍲</div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <h2 class="section-title">ليه كشري أفندينا؟</h2>
+  <p class="section-sub">حاجات بتفرق فعلاً</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🕒</div>
+      <h3>مفتوح 24 ساعة</h3>
+      <p>مهما كان وقتك، إحنا موجودين. فطار، غدا، عشا، أو سهرة.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🥇</div>
+      <h3>مكونات طازة</h3>
+      <p>بنعمّل الكشري كل يوم بمكونات طازة ومضمونة.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🛵</div>
+      <h3>توصيل سريع</h3>
+      <p>اطلب واتساب وهنجيلك لحد باب البيت في أسرع وقت.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">⭐</div>
+      <h3>تقييم 4.3</h3>
+      <p>آلاف العملاء جرّبونا وقيّمونا على جوجل ماب.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <h2 class="section-title">آراء عملائنا</h2>
+  <p class="section-sub">كلامهم هو اللي بيفرق</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"الكشري طعمه حلو والأسعار مناسبة، بروح هناك كل ما أشتاق لكشري في الزمالك."</p>
+      <div class="reviewer">— أحمد م.</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p>"مكان ممتاز وسريع، الشاورما تحفة والخدمة كويسة جدًا."</p>
+      <div class="reviewer">— سارة ع.</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"أحلى كشري في الزمالك بلا منازع، ودايمًا مفتوح في أي وقت."</p>
+      <div class="reviewer">— محمد ك.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="section-title">تواصل معانا</h2>
+  <p class="section-sub">تعال زورنا أو كلمنا</p>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4>العنوان</h4>
+          <p>2 شارع طه حسين، الزمالك، القاهرة – أمام اليمامة سنتر</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>التليفون</h4>
+          <p><a href="tel:+201145555042">011 4555 5042</a></p>
+          <p><a href="tel:+201064780495">010 6478 0495</a></p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕒</div>
+        <div>
+          <h4>ساعات العمل</h4>
+          <p>مفتوح 24 ساعة – 7 أيام في الأسبوع</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">💬</div>
+        <div>
+          <h4>واتساب</h4>
+          <p><a href="https://wa.me/201145555042" target="_blank">اطلب واتساب دلوقتي</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="map-box">
+      <iframe
+        src="https://www.google.com/maps?q=Koshary+Afandina+Zamalek+Cairo&output=embed"
+        loading="lazy" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="logo">كشري أفندينا</span>
+  <p>© 2025 كشري أفندينا – الزمالك. كل الحقوق محفوظة.</p>
+  <p>مفتوح 24 ساعة | طعم مصري أصيل ❤️</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/201145555042?text=عايز%20أطلب%20من%20كشري%20أفندينا" class="wa-float" target="_blank" aria-label="واتساب">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.13c-.24.68-1.42 1.3-1.96 1.35-.54.05-1.04.24-3.5-.73-2.95-1.16-4.83-4.19-4.98-4.38-.15-.19-1.2-1.6-1.2-3.05s.76-2.16 1.03-2.46c.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.58.83 2.02.9 2.17.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.18-.19.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.71.81 2 .96.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+</a>
+
+<script>
+  // MENU DATA
+  const menuData = {
+    koshari: [
+      {name:'كشري صغير', desc:'طبق كشري كلاسيك حجم صغير', price:35, icon:'🍛', tag:'الأكثر طلبًا'},
+      {name:'كشري وسط', desc:'طبق كشري كلاسيك حجم وسط', price:45, icon:'🍛'},
+      {name:'كشري كبير', desc:'طبق كشري كلاسيك حجم كبير', price:55, icon:'🍛'},
+      {name:'كشري دبل', desc:'طبق كشري مضاعف للجوعانين', price:70, icon:'🍛', tag:'جديد'},
+      {name:'كشري بالشاورما', desc:'كشري + شاورما فراخ على الوش', price:85, icon:'🍛'},
+      {name:'كشري سادة', desc:'كشري بدون صلصة ولا دقة', price:30, icon:'🍚'},
+    ],
+    shawarma: [
+      {name:'شاورما فراخ صغير', desc:'شاورما فراخ طازة مع الثومية', price:40, icon:'🌯'},
+      {name:'شاورما فراخ وسط', desc:'شاورما فراخ مع بطاطس', price:55, icon:'🌯', tag:'الأكثر طلبًا'},
+      {name:'شاورما فراخ كبير', desc:'شاورما فراخ حجم كبير', price:70, icon:'🌯'},
+      {name:'شاورما لحم', desc:'شاورما لحم بلدي', price:80, icon:'🥙'},
+      {name:'شاورما ميكس', desc:'فراخ + لحم', price:90, icon:'🌯'},
+      {name:'صحن شاورما', desc:'صحن شاورما مع عيش وسلطة', price:110, icon:'🍽️'},
+    ],
+    extras: [
+      {name:'بطاطس محمرة', desc:'بطاطس مقرمشة طازة', price:25, icon:'🍟'},
+      {name:'سلطة', desc:'سلطة خضرا طازة', price:15, icon:'🥗'},
+      {name:'دقة', desc:'دقة كشري بالليمون والكمون', price:10, icon:'🧄'},
+      {name:'صلصة كشري', desc:'صلصة سرية خاصة', price:10, icon:'🍅'},
+      {name:'عيش بلدي', desc:'رغيف عيش بلدي طازة', price:5, icon:'🫓'},
+      {name:'مقرمشات', desc:'بصل مقرمش', price:10, icon:'🧅'},
+    ],
+    drinks: [
+      {name:'كولا', desc:'مشروب غازي مبرد', price:15, icon:'🥤'},
+      {name:'سفن أب', desc:'مشروب غازي مبرد', price:15, icon:'🥤'},
+      {name:'عصير مانجو', desc:'عصير مانجو طبيعي', price:25, icon:'🥭'},
+      {name:'عصير برتقال', desc:'عصير برتقال طازة', price:25, icon:'🍊'},
+      {name:'مياه معدنية', desc:'مياه معدنية 600 مل', price:10, icon:'💧'},
+      {name:'شاي', desc:'شاي مصري', price:10, icon:'🍵'},
+    ]
+  };
+
+  const grid = document.getElementById('menuGrid');
+  const btns = document.querySelectorAll('.cat-btn');
+
+  function renderMenu(cat){
+    grid.innerHTML = '';
+    menuData[cat].forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'menu-card';
+      card.innerHTML = `
+        ${item.tag ? `<span class="tag">${item.tag}</span>` : ''}
+        <div class="menu-card-img">${item.icon}</div>
+        <div class="menu-card-body">
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
+          <div class="menu-card-footer">
+            <div class="price">${item.price} <small>ج.م</small></div>
+            <button class="order-btn" onclick="orderItem('${item.name}',${item.price})">اطلب</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderMenu(btn.dataset.cat);
+    });
+  });
+
+  function orderItem(name, price){
+    const msg = `عايز أطلب: ${name} - ${price} ج.م من كشري أفندينا`;
+    window.open(`https://wa.me/201145555042?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  renderMenu('koshari');
+</script>
+</body>
+</html>
